@@ -5,6 +5,7 @@ import { LoginFormSchema, loginSchema } from "@/services/userService/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as Form from "@radix-ui/react-form"
 import stylex from "@stylexjs/stylex"
+import Link from "next/link"
 import { useForm } from "react-hook-form"
 
 export default function LoginForm({
@@ -77,6 +78,7 @@ export default function LoginForm({
       <Form.Submit asChild>
         <Button>Login</Button>
       </Form.Submit>
+      if you don't have an account, <Link href="/register">register</Link>
     </Form.Root>
   )
 }

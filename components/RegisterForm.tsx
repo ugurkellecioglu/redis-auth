@@ -8,6 +8,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as Form from "@radix-ui/react-form"
 import stylex from "@stylexjs/stylex"
+import Link from "next/link"
 import { useForm } from "react-hook-form"
 
 export default function RegisterForm({
@@ -81,8 +82,10 @@ export default function RegisterForm({
         </Form.Control>
       </Form.Field>
       <Form.Submit asChild>
-        <Button>Login</Button>
+        <Button>Register</Button>
       </Form.Submit>
+      if you already have an account
+      <Link href="/login">Login</Link>
     </Form.Root>
   )
 }
