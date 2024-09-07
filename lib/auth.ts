@@ -27,7 +27,8 @@ const authConfig: NextAuthConfig = {
         const user = (await redis.hmget(
           `user:${email}`,
           "email",
-          "password"
+          "password",
+          "id"
         )) as {
           email: string
           password: string
@@ -40,13 +41,19 @@ const authConfig: NextAuthConfig = {
         if (!isValid) {
           return null
         }
-
+        console.log("authorize", user)
         return user
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user, account, session }) {
+      console.log({
+        token,
+        user,
+        account,
+        session,
+      })
       if (account?.provider === "credentials") {
         token.credentials = true
       }
@@ -55,6 +62,7 @@ const authConfig: NextAuthConfig = {
   },
   jwt: {
     encode: async function (params) {
+      console.log(params)
       if (params.token?.credentials) {
         const sessionToken = uuid()
 
