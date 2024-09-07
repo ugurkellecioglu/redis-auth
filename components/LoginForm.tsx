@@ -11,7 +11,16 @@ import { useForm } from "react-hook-form"
 export default function LoginForm({
   login,
 }: {
-  login: (data: LoginFormSchema) => Promise<void>
+  login: (formData: LoginFormSchema) => Promise<
+    | {
+        data: unknown
+        error?: undefined
+      }
+    | {
+        error: unknown
+        data?: undefined
+      }
+  >
 }) {
   const {
     register,
@@ -78,7 +87,7 @@ export default function LoginForm({
       <Form.Submit asChild>
         <Button>Login</Button>
       </Form.Submit>
-      if you don't have an account, <Link href="/register">register</Link>
+      if you don{"'"}t have an account, <Link href="/register">register</Link>
     </Form.Root>
   )
 }

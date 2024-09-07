@@ -14,7 +14,19 @@ import { useForm } from "react-hook-form"
 export default function RegisterForm({
   signup,
 }: {
-  signup: (data: RegisterFormSchema) => Promise<void>
+  signup: (formData: RegisterFormSchema) => Promise<
+    | {
+        data: {
+          id: string
+          email: string
+        }
+        error?: undefined
+      }
+    | {
+        error: unknown
+        data?: undefined
+      }
+  >
 }) {
   const {
     register,
