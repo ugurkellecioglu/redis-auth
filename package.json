@@ -11,7 +11,11 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.8"
+    "next": "14.2.8",
+    "@babel/runtime": "^7.24.7",
+    "@stylexjs/babel-plugin": "^0.7.0",
+    "@stylexjs/nextjs-plugin": "^0.7.0",
+    "@stylexjs/stylex": "^0.7.0"
   },
   "devDependencies": {
     "typescript": "^5",
