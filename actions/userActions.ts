@@ -1,20 +1,17 @@
 "use server"
-import userService from "@/services/userService"
-import { LoginInput, RegisterInput } from "@/services/userService/types"
+import * as userService from "@/services/userService"
+import {
+  LoginFormSchema,
+  loginSchema,
+  RegisterFormSchema,
+  registerSchema,
+} from "@/services/userService/types"
 
-export const login = async (formData: FormData) => {
-  const loginInput: LoginInput = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  }
-  if (!loginInput.email || !loginInput.password) {
-    return {
-      error: "Email and password are required",
-    }
-  }
-
+export const login = async (formData: LoginFormSchema) => {
   try {
-    const res = await userService.login(loginInput)
+    loginSchema.parse(formData)
+
+    const res = await userService.login(formData)
     return {
       data: res,
     }
@@ -25,19 +22,11 @@ export const login = async (formData: FormData) => {
   }
 }
 
-export const register = async (formData: FormData) => {
-  const registerInput: RegisterInput = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  }
-  if (!registerInput.email || !registerInput.password) {
-    return {
-      error: "Email and password are required",
-    }
-  }
-
+export const register = async (formData: RegisterFormSchema) => {
   try {
-    const res = await userService.signupUser(registerInput)
+    registerSchema.parse(formData)
+
+    const res = await userService.signupUser(formData)
     return {
       data: res,
     }
