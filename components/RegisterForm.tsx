@@ -8,6 +8,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as Form from "@radix-ui/react-form"
 import stylex from "@stylexjs/stylex"
+import { User } from "next-auth"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 
@@ -16,10 +17,7 @@ export default function RegisterForm({
 }: {
   signup: (formData: RegisterFormSchema) => Promise<
     | {
-        data: {
-          id: string
-          email: string
-        }
+        data: User
         error?: undefined
       }
     | {

@@ -11,8 +11,13 @@ export async function findUserByEmail(email: string): Promise<User | null> {
     return null
   }
 
-  const user = await redis.hgetall(userKey)
-  return user as User
+  const userRecord = await redis.hgetall(userKey)
+
+  if (!userRecord || !userRecord.password) {
+    return null
+  }
+
+  return userRecord as unknown as User
 }
 
 export async function createUser(
