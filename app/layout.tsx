@@ -26,6 +26,7 @@ const fgColor = `rgba(${$.foregroundR}, ${$.foregroundG}, ${$.foregroundB}, 1)`
 const styles = stylex.create({
   html: {
     colorScheme: "light dark",
+    fontFamily: $.fontSans,
   },
   reset: {
     minHeight: "100%",

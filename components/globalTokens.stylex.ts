@@ -212,6 +212,7 @@ export const globalTokens = stylex.defineVars({
     "monospace",
   ].join(", "),
   fontSans: [
+    "Poppins",
     "--apple-system",
     "BlinkMacSystemFont",
     '"Segoe UI"',
