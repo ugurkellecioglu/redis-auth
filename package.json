@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write . --plugin=prettier-plugin-stylex-key-sort"
   },
   "dependencies": {
     "@auth/upstash-redis-adapter": "^2.4.2",
@@ -35,6 +36,7 @@
     "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.8",
+    "prettier-plugin-stylex-key-sort": "^1.0.1",
     "typescript": "^5"
   }
 }
