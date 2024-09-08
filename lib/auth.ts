@@ -1,5 +1,4 @@
 import { UpstashRedisAdapter } from "@auth/upstash-redis-adapter"
-import bcryptjs from "bcryptjs"
 import { v4 as uuid } from "uuid"
 import redis from "./redis"
 
@@ -7,6 +6,7 @@ import type { NextAuthConfig } from "next-auth"
 import NextAuth from "next-auth"
 import { encode as defaultEncode } from "next-auth/jwt"
 import Credentials from "next-auth/providers/credentials"
+import { comparePassword } from "./hash"
 
 const adapter = UpstashRedisAdapter(redis)
 
@@ -37,7 +37,7 @@ const authConfig: NextAuthConfig = {
           return null
         }
 
-        const isValid = await bcryptjs.compare(password, user.password)
+        const isValid = await comparePassword(password, user.password)
         if (!isValid) {
           return null
         }

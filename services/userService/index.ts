@@ -1,7 +1,7 @@
 "use server"
 import { signIn } from "@/lib/auth"
+import { hashPassword } from "@/lib/hash"
 import redis from "@/lib/redis"
-import bcryptjs from "bcryptjs"
 import { v4 as uuid } from "uuid"
 import { LoginInput } from "./types"
 
@@ -15,7 +15,7 @@ export async function signupUser(registerInput: LoginInput) {
   }
 
   // hash password using bcrypt
-  const hashedPassword = await bcryptjs.hash(registerInput.password, 10)
+  const hashedPassword = await hashPassword(registerInput.password)
   const id = uuid()
 
   const user = {
