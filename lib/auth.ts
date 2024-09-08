@@ -1,7 +1,8 @@
 import { UpstashRedisAdapter } from "@auth/upstash-redis-adapter"
-import { v4 as uuid } from "uuid"
 import redis from "./redis"
 
+import { findUserByEmail } from "@/data/userRepository"
+import { createSessionToken } from "@/services/authService"
 import { comparePassword } from "@/utils/hash"
 import type { NextAuthConfig } from "next-auth"
 import NextAuth from "next-auth"
@@ -24,36 +25,24 @@ const authConfig: NextAuthConfig = {
           password: string
         }
 
-        const user = (await redis.hmget(
-          `user:${email}`,
-          "email",
-          "password",
-          "id"
-        )) as {
-          email: string
-          password: string
-        }
+        const user = await findUserByEmail(email)
         if (!user) {
+          console.error("User not found")
           return null
         }
 
         const isValid = await comparePassword(password, user.password)
         if (!isValid) {
+          console.error("Invalid password")
           return null
         }
-        console.log("authorize", user)
+
         return user
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account, session }) {
-      console.log({
-        token,
-        user,
-        account,
-        session,
-      })
+    async jwt({ token, account }) {
       if (account?.provider === "credentials") {
         token.credentials = true
       }
@@ -62,25 +51,8 @@ const authConfig: NextAuthConfig = {
   },
   jwt: {
     encode: async function (params) {
-      console.log(params)
       if (params.token?.credentials) {
-        const sessionToken = uuid()
-
-        if (!params.token.sub) {
-          throw new Error("No user ID found in token")
-        }
-
-        const createdSession = await adapter?.createSession?.({
-          sessionToken: sessionToken,
-          userId: params.token.sub,
-          expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
-        })
-
-        if (!createdSession) {
-          throw new Error("Failed to create session")
-        }
-
-        return sessionToken
+        return createSessionToken(params, adapter)
       }
       return defaultEncode(params)
     },
