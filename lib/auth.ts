@@ -2,11 +2,11 @@ import { UpstashRedisAdapter } from "@auth/upstash-redis-adapter"
 import { v4 as uuid } from "uuid"
 import redis from "./redis"
 
+import { comparePassword } from "@/utils/hash"
 import type { NextAuthConfig } from "next-auth"
 import NextAuth from "next-auth"
 import { encode as defaultEncode } from "next-auth/jwt"
 import Credentials from "next-auth/providers/credentials"
-import { comparePassword } from "./hash"
 
 const adapter = UpstashRedisAdapter(redis)
 
