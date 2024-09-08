@@ -1,4 +1,4 @@
-import { register } from "@/actions/userActions"
+import { register } from "@/actions/authActions"
 import Container from "@/components/Container"
 import RegisterForm from "@/components/RegisterForm"
 export default function LoginPage() {
