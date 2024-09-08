@@ -1,11 +1,11 @@
 "use server"
-import * as userService from "@/services/userService"
+import * as userService from "@/services/authService"
 import {
   LoginFormSchema,
   loginSchema,
   RegisterFormSchema,
   registerSchema,
-} from "@/services/userService/types"
+} from "@/services/authService/types"
 
 export const login = async (formData: LoginFormSchema) => {
   try {

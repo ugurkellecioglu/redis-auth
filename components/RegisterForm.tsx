@@ -4,7 +4,7 @@ import { formStyle } from "@/components/Form.stylex"
 import {
   RegisterFormSchema,
   registerSchema,
-} from "@/services/userService/types"
+} from "@/services/authService/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as Form from "@radix-ui/react-form"
 import stylex from "@stylexjs/stylex"

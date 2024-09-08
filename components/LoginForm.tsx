@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/components/Button"
 import { formStyle } from "@/components/Form.stylex"
-import { LoginFormSchema, loginSchema } from "@/services/userService/types"
+import { LoginFormSchema, loginSchema } from "@/services/authService/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as Form from "@radix-ui/react-form"
 import stylex from "@stylexjs/stylex"
