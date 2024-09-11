@@ -1,7 +1,7 @@
 import "./globals.css"
 
 import * as stylex from "@stylexjs/stylex"
-import { globalTokens as $ } from "../components/globalTokens.stylex"
+import { globalTokens as $ } from "../styles/tokens/globalTokens.stylex"
 
 export const metadata = {
   title: "Create Next App",

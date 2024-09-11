@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex"
-import { colors, spacing } from "./globalTokens.stylex"
+import { colors, spacing } from "../styles/tokens/globalTokens.stylex"
 
 const buttonStyle = stylex.create({
   root: {

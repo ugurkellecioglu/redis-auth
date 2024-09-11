@@ -1,6 +1,6 @@
 import { sizes } from "@stylexjs/open-props/lib/sizes.stylex"
 import * as stylex from "@stylexjs/stylex"
-import { colors, spacing } from "./globalTokens.stylex"
+import { colors, spacing } from "../styles/tokens/globalTokens.stylex"
 export const formStyle = stylex.create({
   root: {
     borderRadius: spacing.md,
