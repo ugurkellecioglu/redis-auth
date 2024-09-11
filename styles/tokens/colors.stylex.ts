@@ -1,0 +1,25 @@
+import * as stylex from "@stylexjs/stylex"
+
+export const colors = stylex.defineVars({
+  primary: "#0070f3",
+  secondary: "#ff0080",
+  accent: "#79ffe1",
+  background: "#333",
+  foreground: "#000",
+  border: "#eaeaea",
+  error: "#ff0000",
+  success: "#00ff00",
+  warning: "#ffff00",
+  info: "#0000ff",
+  text: "#000",
+  link: "#0070f3",
+  visited: "#ff00ff",
+  disabled: "#eaeaea",
+  muted: "#f6f6f6",
+  placeholder: "#e1e1e1",
+  selected: "#f0f0f0",
+  hover: "#eaeaea",
+  active: "#eaeaea",
+  focus: "#0070f3",
+  focusText: "#fff",
+})
