@@ -27,7 +27,7 @@ interface SelectDemoProps {
   placeholder?: string
 }
 
-const SelectDemo: React.FC<SelectDemoProps> = ({
+const RSelect: React.FC<SelectDemoProps> = ({
   groups,
   placeholder = "Select an item...",
 }) => (
@@ -96,5 +96,8 @@ const SelectItem = React.forwardRef<
     </Select.Item>
   )
 })
+SelectItem.displayName = "SelectItem"
 
-export default SelectDemo
+RSelect.displayName = "Select"
+
+export default RSelect

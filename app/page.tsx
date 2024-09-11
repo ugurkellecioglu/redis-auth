@@ -1,3 +1,4 @@
+import Button from "@/components/Button"
 import Container from "@/components/Container"
 import SelectDemo from "@/components/Select"
 import { auth } from "@/lib/auth"
@@ -55,7 +56,7 @@ export default async function Home() {
   return (
     <Container>
       Current session:
-      {JSON.stringify(session)}
+      <p>{JSON.stringify(session, null, 2)}</p>
       <div>
         {session?.user && (
           <a {...stylex.props(styles.link)} href="/api/auth/signout">
@@ -72,6 +73,9 @@ export default async function Home() {
             </Link>
           </div>
         )}
+        <Button variant="primary" size="md">
+          Themed Button
+        </Button>
       </div>
       <SelectDemo groups={groups} placeholder="Select a food item..." />
     </Container>

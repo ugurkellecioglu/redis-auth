@@ -24,4 +24,6 @@ export const primary = stylex.createTheme(colors, {
   active: { default: "#2980b9", [DARK]: "#1abc9c" }, // Active state color
   focus: { default: "#e67e22", [DARK]: "#d35400" },
   focusText: { default: "#fff", [DARK]: "#fff" },
+  primaryHover: { default: "#2980b9", [DARK]: "#3498db" },
+  secondaryHover: { default: "#27ae60", [DARK]: "#2ecc71" },
 })

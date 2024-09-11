@@ -22,4 +22,6 @@ export const colors = stylex.defineVars({
   active: "#eaeaea",
   focus: "#0070f3",
   focusText: "#fff",
+  primaryHover: "#0058cc",
+  secondaryHover: "#ff006e",
 })
